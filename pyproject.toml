@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+
+[project]
+name = "cant-take-the-sky"
+version = "0.0.1"
+description = "Find a ship, find a crew... keep flying"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Gamers",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pylint",
+    "pytest",
+    "pytest-cov",
+]
+
+release = [
+    "pygame",
+]
+
+all = [
+    "cant-take-the-sky[dev,release]"
+]
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["app*"]
+
+[tool.pylint.MASTER]
+init-hook = 'import sys; sys.path.insert(0,"src")'
+
+[tool.pylint.FORMAT]
+max-line-length = 125
+
+[tool.pylint.DESIGN]
+max-args = 7
+max-locals = 20
+max-branches = 15
+max-statements = 60
+
+[tool.pylint.MESSAGES_CONTROL]
+# Disable specific warnings for test files
+disable = [
+    "import-outside-toplevel",
+    "too-few-public-methods",
+    "unused-argument",
+    "import-error",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["test"]
+python_files = "tests.py test_*.py *_test.py"
+
+[tool.coverage.run]
+source = ["app"]
+branch = true
