@@ -21,5 +21,5 @@ python -m pip --upgrade pip
 # Install dependencies: note, your choices are 'dev', 'release', or 'all'
 pip install -e .[all]
 
-python src/main.py
+python src/app/main.py
 ```
