@@ -1,0 +1,11 @@
+{
+    "name":"Hoban Washburne",
+    "nickname": "Wash",
+    "level": 1,
+    "special": "Pilot",
+    "attributes":{
+        "negotiation": 36,
+        "planning": 31, 
+        "mechanical": 39
+    }
+}

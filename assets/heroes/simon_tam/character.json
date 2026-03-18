@@ -1,0 +1,11 @@
+{
+    "name":"Simon Tam",
+    "nickname": "Simon",
+    "level": 1,
+    "special": "Fugitive",
+    "attributes":{
+        "negotiation": 28,
+        "planning": 33, 
+        "medical": 70
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name":"Kaywinnet Lee Frye",
+    "nickname": "Kaylee",
+    "level": 1,
+    "special": "Psychic",
+    "attributes":{
+        "negotiation": 29,
+        "planning": 34, 
+        "mechanical": 72
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name":"Inara Serra",
+    "nickname": "Inara",
+    "level": 1,
+    "special": "Companion",
+    "attributes":{
+        "negotiation": 50,
+        "command": 32, 
+        "combat": 30
+    }
+}

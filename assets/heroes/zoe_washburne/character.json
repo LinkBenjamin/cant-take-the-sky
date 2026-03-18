@@ -1,0 +1,11 @@
+{
+    "name":"Zoe Washburne",
+    "nickname": "Zoe",
+    "level": 1,
+    "special": "Browncoat Veteran",
+    "attributes":{
+        "combat": 45, 
+        "planning": 20,
+        "medical":19
+    }
+}

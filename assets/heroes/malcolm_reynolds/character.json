@@ -1,0 +1,11 @@
+{
+    "name":"Malcolm Reynolds",
+    "nickname": "Mal",
+    "level": 1,
+    "special": "Browncoat Veteran",
+    "attributes":{
+        "command": 45,
+        "combat": 35, 
+        "planning": 30
+    }
+}

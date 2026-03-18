@@ -1,0 +1,11 @@
+{
+    "name":"Derrial Book",
+    "nickname": "Book",
+    "level": 1,
+    "special": "Shepherd",
+    "attributes":{
+        "negotiation": 29,
+        "planning": 56, 
+        "combat": 43
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name":"Jayne Cobb",
+    "nickname": "Jayne",
+    "level": 1,
+    "special": "Enforcer",
+    "attributes":{
+        "command": 33,
+        "planning": 28, 
+        "combat": 47
+    }
+}

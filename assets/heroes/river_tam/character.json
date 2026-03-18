@@ -1,0 +1,11 @@
+{
+    "name":"River Tam",
+    "nickname": "River",
+    "level": 1,
+    "special": "Psychic",
+    "attributes":{
+        "combat": 64,
+        "planning": 40, 
+        "mechanical": 28
+    }
+}
