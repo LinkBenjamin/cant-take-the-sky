@@ -9,14 +9,9 @@ class Hero:
     Heroes are crew members that you can hire.  
     Each hero has 3 skills out of the 6 major skills, 
     plus XP and Level, and one special-category ability.
-        #               MZWKJSRB
-        # Negotiation.   xxx x x
-        # Command.      x   x  
-        # Combat        xx. x xx
-        # Planning      x xxxxxx
-        # Mechanical      xx  x
-        # Medical        x.  x
 
+    Skill List: 
+    Negotiation, Command, Combat, Planning, Mechanical, Medical
     '''
 
     def __init__(self, image, assets):
