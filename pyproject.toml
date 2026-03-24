@@ -63,3 +63,7 @@ python_files = "tests.py test_*.py *_test.py"
 [tool.coverage.run]
 source = ["app"]
 branch = true
+omit = [
+    "test/*",
+    "**/__init__.py",
+]
