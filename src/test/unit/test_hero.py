@@ -25,5 +25,5 @@ def test_gain_xp():
     assert x.level == 2
     assert x.xp == 100
     assert x.xp_uses == []
-    assert x.attributes("one") == 11
+    assert x.attributes["one"] == 11
 
