@@ -26,7 +26,10 @@ release = [
 ]
 
 all = [
-    "cant-take-the-sky[dev,release]"
+    "pylint",
+    "pytest",
+    "pytest-cov",
+    "pygame",
 ]
 
 
