@@ -22,10 +22,12 @@ dev = [
 ]
 
 release = [
+    "dotenv",
     "pygame",
 ]
 
 all = [
+    "dotenv",
     "pylint",
     "pytest",
     "pytest-cov",
