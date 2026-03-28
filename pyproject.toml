@@ -22,11 +22,16 @@ dev = [
 ]
 
 release = [
+    "dotenv",
     "pygame",
 ]
 
 all = [
-    "cant-take-the-sky[dev,release]"
+    "dotenv",
+    "pylint",
+    "pytest",
+    "pytest-cov",
+    "pygame",
 ]
 
 
@@ -57,13 +62,13 @@ disable = [
 
 [tool.pytest.ini_options]
 addopts = "-q"
-testpaths = ["test"]
+testpaths = ["src/test"]
 python_files = "tests.py test_*.py *_test.py"
 
 [tool.coverage.run]
-source = ["app"]
+source = ["."]
 branch = true
 omit = [
-    "test/*",
+    "*/test/*",
     "**/__init__.py",
 ]

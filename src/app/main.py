@@ -10,37 +10,32 @@ import logging
 import sys
 import os
 from pathlib import Path
-
 from dotenv import load_dotenv
+from app.screens.main_menu import MainMenu
+from app.screens.scene_manager import SceneManager
 
-def _load_env_file():
-    config_dir = Path(__file__).parent.parent / "config"
-    env_name = os.environ.get(".env").lower()
-    env_file = config_dir / ".env"
-
-    load_dotenv(env_file)
-
-    # Set up global logging level from LOG_LEVEL env var
+def _setup_logging():
+    '''Set up global logging level from LOG_LEVEL env var'''
     log_level = os.environ.get("LOG_LEVEL", "INFO").upper()
     numeric_level = getattr(logging, log_level, logging.INFO)
-    logging.basicConfig(level=numeric_level, format='[$(levelname)s] $(message)s')
+    logging.basicConfig(level=numeric_level, format='[%(levelname)s] %(message)s')
     logging.info("Logging initialized at level %s, if you didn't request this check the LOG_LEVEL variable in your .env file.", log_level)
-    logging.info("[env] Loaded environment file: %s", env_file)
 
+def _load_env_file():
+    '''Load the .env file'''
+    config_dir = Path(__file__).parent.parent.parent / "config"
+    env_file = config_dir / ".env"
+    print(f"[DEBUG] Looking for env at {env_file.absolute()}")
+    if not env_file.exists():
+        print("[ERROR] .env file not found at that location!")
+    success = load_dotenv(env_file)
+    print(f"[DEBUG] Load successful? {success}")
 
 def get_screen(width, height):
-    pygame.display.set_caption()
+    '''Get the pygame screen object'''
+    gamename = os.environ.get("GAME_NAME")
+    pygame.display.set_caption(gamename if gamename else "ERROR LOADING GAME_NAME FROM .env")
     return pygame.display.set_mode((width, height))
-
-def run_game_loop(screen):
-    '''The infinite loop that is the game running.'''
-    game_playing = True
-
-    while game_playing:
-        game_playing = False
-
-    return
-
 
 def main():
     '''The main entry point of our game.'''
@@ -48,12 +43,28 @@ def main():
     # Load ENV 
     _load_env_file()
 
+    # Set up logging
+    _setup_logging()
+
     # Initialize Pygame
     pygame.init()
     
-    screen = get_screen()
-    # Run Game Loop
-    run_game_loop(screen)
+    screen = get_screen(1024,768)
+
+    logging.debug("Pygame initialized, screen object created. Starting game loop...")
+    
+    start_scene = MainMenu(screen)
+
+    # Hand control to the Manager
+    manager = SceneManager(start_scene)
+    
+    # Start the infinite loop inside the manager
+    manager.run()
+
+    # 5. Clean exit
+    pygame.quit()
+
+    logging.debug("Quit request detected, shutting down...")
     pygame.quit()
     sys.exit()
 
