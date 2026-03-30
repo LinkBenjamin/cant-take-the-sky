@@ -48,15 +48,11 @@ def main():
 
     # Initialize Pygame
     pygame.init()
-    
-    screen = get_screen(1024,768)
 
     logging.debug("Pygame initialized, screen object created. Starting game loop...")
-    
-    start_scene = MainMenu(screen)
 
     # Hand control to the Manager
-    manager = SceneManager(start_scene)
+    manager = SceneManager()
     
     # Start the infinite loop inside the manager
     manager.run()

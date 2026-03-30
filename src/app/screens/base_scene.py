@@ -1,13 +1,14 @@
 '''
     BaseScene is an Abstract class defining a scene in the game.
 '''
+import logging
 
 from abc import ABC, abstractmethod
 
 class BaseScene(ABC):
     def __init__(self):
-        self.next_scene = self
-        self.running = True
+        self.next_scene = ""
+        self.logger = logging.getLogger(self.__class__.__name__)
 
     @abstractmethod
     def handle_events(self, events):
@@ -26,4 +27,5 @@ class BaseScene(ABC):
 
     def switch_to(self, next_scene):
         """This is a helper, so it doesn't need to be abstract."""
+        self.logger.debug(f"switch_to( {next_scene} ) called.")
         self.next_scene = next_scene
