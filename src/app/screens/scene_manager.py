@@ -1,10 +1,27 @@
 import pygame
+import logging
+
+from app.screens.main_menu import MainMenu
+from app.screens.about_page import AboutPage
 
 class SceneManager:
-    def __init__(self, starting_scene):
+    def __init__(self):
+        self.logger = logging.getLogger(self.__class__.__name__)
         self.screen = pygame.display.set_mode((1280, 720))
         self.clock = pygame.time.Clock()
-        self.active_scene = starting_scene
+        self.scenes = {
+            "main_menu": MainMenu,
+            "about": AboutPage
+        }
+        self.active_scene = None
+        self.change_scene("main_menu")
+
+    def change_scene(self, name):
+        if name:
+            self.logger.debug(f"Changing scene to {name}")
+            self.active_scene = self.scenes[name](self.screen,self)
+        else:
+            self.active_scene = None
 
     def run(self):
         while self.active_scene is not None:
@@ -25,7 +42,7 @@ class SceneManager:
                 pygame.display.flip()
 
             # 4. Check if the scene wants to switch
-                if self.active_scene != self.active_scene.next_scene:
-                    self.active_scene = self.active_scene.next_scene
+                if self.active_scene.next_scene != "":
+                    self.change_scene(self.active_scene.next_scene)
             
                 self.clock.tick(60)
