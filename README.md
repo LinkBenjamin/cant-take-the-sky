@@ -21,5 +21,9 @@ python -m pip --upgrade pip
 # Install dependencies: note, your choices are 'dev', 'release', or 'all'
 pip install -e .[all]
 
+# Run tests
+pytest --cov=src --cov-report=term --cov-report=xml
+
+# Run the game
 python src/app/main.py
 ```
