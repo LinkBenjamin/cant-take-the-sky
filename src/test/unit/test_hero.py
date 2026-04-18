@@ -16,6 +16,10 @@ def test_gain_xp():
     }
     x = Hero("image", a)
 
+    hero_string = x.pretty_print()
+
+    assert hero_string == "t - xp 0 - level 1 - attr {'one': 1, 'two': 2, 'three': 3}"
+
     x.gain_xp(100,"one")
     assert x.level == 1
     assert x.xp == 100

@@ -1,11 +1,11 @@
 {
-    "name":"Jayne Cobb",
-    "nickname": "Jayne",
+    "name":"Derrial Book",
+    "nickname": "Book",
     "level": 1,
-    "special": "Enforcer",
+    "special": "Shepherd",
     "attributes":{
-        "command": 33,
-        "planning": 28, 
-        "combat": 47
+        "negotiation": 29,
+        "planning": 56, 
+        "combat": 43
     }
 }

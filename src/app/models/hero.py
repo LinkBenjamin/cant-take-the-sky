@@ -35,7 +35,7 @@ class Hero:
             self.__level_up()
 
     def pretty_print(self):
-        print(f"{self.nickname} - xp {self.xp} - level {self.level} - attr {self.attributes}")
+        return f"{self.nickname} - xp {self.xp} - level {self.level} - attr {self.attributes}"
 
     def __level_up(self):
         '''
