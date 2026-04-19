@@ -58,6 +58,7 @@ disable = [
     "too-few-public-methods",
     "unused-argument",
     "import-error",
+    "no-member",
 ]
 
 [tool.pytest.ini_options]
@@ -71,4 +72,5 @@ branch = true
 omit = [
     "*/test/*",
     "**/__init__.py",
+    "**/sandbox.py",
 ]

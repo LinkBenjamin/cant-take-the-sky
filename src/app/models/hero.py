@@ -24,7 +24,7 @@ class Hero:
         self.attributes = assets.get("attributes", "")
         self.xp = 0
         self.xp_uses = []
-    
+
     def gain_xp(self, xp, attribute):
         ''' Add XP and decide if you need to level up '''
         self.xp += xp
@@ -35,6 +35,7 @@ class Hero:
             self.__level_up()
 
     def pretty_print(self):
+        '''Prints a string version of the hero's information, for testing/logging purposes'''
         return f"{self.nickname} - xp {self.xp} - level {self.level} - attr {self.attributes}"
 
     def __level_up(self):
@@ -57,4 +58,3 @@ class Hero:
 
         for att in self.attributes:
             self.attributes[att] += int(10 * (counts[att] / len(self.xp_uses)))
-        

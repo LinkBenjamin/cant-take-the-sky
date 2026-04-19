@@ -6,6 +6,10 @@ import logging
 from abc import ABC, abstractmethod
 
 class BaseScene(ABC):
+    '''
+    BaseScene defines a 'next_scene' variable and a switch_to method, 
+    while leaving the other parts of a scene to be abstracted.
+    '''
     def __init__(self):
         self.next_scene = ""
         self.logger = logging.getLogger(self.__class__.__name__)
@@ -13,19 +17,16 @@ class BaseScene(ABC):
     @abstractmethod
     def handle_events(self, events):
         """Child classes MUST handle their own input."""
-        pass
 
     @abstractmethod
     def update(self):
         """Child classes MUST handle their own logic."""
-        pass
 
     @abstractmethod
     def draw(self):
         """Child classes MUST handle their own rendering."""
-        pass
 
     def switch_to(self, next_scene):
         """This is a helper, so it doesn't need to be abstract."""
-        self.logger.debug(f"switch_to( {next_scene} ) called.")
+        self.logger.debug("switch_to( %s ) called.", next_scene)
         self.next_scene = next_scene

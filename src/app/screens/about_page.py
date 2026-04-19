@@ -1,16 +1,22 @@
-import pygame
-import logging
+'''
+About Page
+This is a Screen inheriting from BaseScene, and it displays a brief
+message as well as a button to return to the main menu.
+'''
 
-from .base_scene import BaseScene
+import pygame
+
+from app.screens.base_scene import BaseScene
 
 class AboutPage(BaseScene):
+    '''AboutPage is a simple screen that displays a message and an OK button'''
     def __init__(self, screen, manager):
         super().__init__()
         self.screen = screen
         self.scene_manager = manager
         self.font = pygame.font.SysFont('Arial', 24)
         self.button_font = pygame.font.SysFont('Arial', 32)
-        
+
         # The paragraph text split into a list of strings
         self.text_lines = [
             "This game was built using Pygame.",
@@ -22,7 +28,7 @@ class AboutPage(BaseScene):
             "So don't sue me, y'all. It's just",
             "some fun!"
         ]
-        
+
         # Define the "OK" button (Centered at bottom)
         self.button_rect = pygame.Rect(0, 0, 100, 50)
         self.button_rect.center = (self.screen.get_width() // 2, self.screen.get_height() - 80)
@@ -32,7 +38,7 @@ class AboutPage(BaseScene):
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-            
+
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.button_rect.collidepoint(event.pos):
                     self.logger.debug("Switching to main_menu")
@@ -43,7 +49,7 @@ class AboutPage(BaseScene):
 
     def draw(self):
         # 1. Fill background (or blit your JPG here)
-        self.screen.fill((30, 30, 30)) 
+        self.screen.fill((30, 30, 30))
 
         # 2. Render the paragraph (Line by Line)
         for i, line in enumerate(self.text_lines):
@@ -58,4 +64,3 @@ class AboutPage(BaseScene):
         btn_text = self.button_font.render("OK", True, (0, 0, 0))
         text_rect = btn_text.get_rect(center=self.button_rect.center)
         self.screen.blit(btn_text, text_rect)
-
