@@ -1,12 +1,14 @@
-import pygame
+'''
+The Main Menu of our game
+'''
 import logging
 import os
-
-from .base_scene import BaseScene
-from .about_page import AboutPage
+import pygame
 from app.etc.utils import safe_load_int
+from app.screens.base_scene import BaseScene\
 
 class MainMenu(BaseScene):
+    '''The MainMenu class'''
     def __init__(self, screen, manager):
         super().__init__()
 
@@ -43,21 +45,24 @@ class MainMenu(BaseScene):
         self.selection = None
 
     def handle_events(self, events):
+        '''What to do when the user interacts with the menu'''
         for event in events:
             if event.type == pygame.QUIT:
                 self.selection = 'quit'
-            
+
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 for btn in self.buttons:
                     if btn["rect"].collidepoint(event.pos):
-                        self.logger.debug(f"Menu selection: {btn['action']}")
+                        self.logger.debug("Menu selection: %s", btn['action'])
                         self.selection = btn['action']
 
     def update(self):
+        '''What to do when the screen updates'''
         if self.selection:
             self.on_selection(self.selection)
 
     def draw(self):
+        '''How to redraw the screen'''
         self.screen.blit(self.bg_image, (0, 0))
 
         title_surf = self.title_font.render(os.environ.get('GAME_NAME'),True, self.text_color)
@@ -70,7 +75,7 @@ class MainMenu(BaseScene):
 
             text_surf = self.font.render(btn["label"], True, color)
             self.screen.blit(text_surf, btn["rect"])
-        
+
         pygame.display.flip()
 
     def _setup_buttons(self):
@@ -83,7 +88,8 @@ class MainMenu(BaseScene):
             self.buttons.append({"rect":rect, "action": item["action"], "label": item["label"]})
 
     def on_selection(self, action):
-        self.logger.info(f"{action} Selected.")
+        '''Handle a selection from the menu'''
+        self.logger.info("%s Selected.", action)
         pygame.mixer.music.fadeout(1500)
         match action:
             case 'quit':

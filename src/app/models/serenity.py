@@ -15,5 +15,4 @@ class Serenity:
     - The threat level with Gangsters
     '''
     def __init__(self):
-        
         pass

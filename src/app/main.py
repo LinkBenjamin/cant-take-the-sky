@@ -4,14 +4,12 @@ Main.py: The entry point
 This module serves as the entry point to the game.
 Its purpose is to initialize the game and load data required for operation.
 '''
-
-import pygame
 import logging
 import sys
 import os
 from pathlib import Path
+import pygame
 from dotenv import load_dotenv
-from app.screens.main_menu import MainMenu
 from app.screens.scene_manager import SceneManager
 
 def _setup_logging():
@@ -19,7 +17,9 @@ def _setup_logging():
     log_level = os.environ.get("LOG_LEVEL", "INFO").upper()
     numeric_level = getattr(logging, log_level, logging.INFO)
     logging.basicConfig(level=numeric_level, format='[%(levelname)s] %(message)s')
-    logging.info("Logging initialized at level %s, if you didn't request this check the LOG_LEVEL variable in your .env file.", log_level)
+    logging.info("Logging initialized at level %s."
+                 "if you didn't request this check the LOG_LEVEL variable in your .env file.",
+                 log_level)
 
 def _load_env_file():
     '''Load the .env file'''
@@ -40,7 +40,7 @@ def get_screen(width, height):
 def main():
     '''The main entry point of our game.'''
 
-    # Load ENV 
+    # Load ENV
     _load_env_file()
 
     # Set up logging
@@ -53,7 +53,7 @@ def main():
 
     # Hand control to the Manager
     manager = SceneManager()
-    
+
     # Start the infinite loop inside the manager
     manager.run()
 
